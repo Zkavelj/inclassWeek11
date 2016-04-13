@@ -124,12 +124,16 @@ int main()
 
     //1. Create a tree --> transforming the vector of words into the tree
     BTree *b;
+    BTree *test;
     b=new BTree;
-    for(int i=0;i<words.size();i++)
-        b->add_word_to_tree(words[i]);
+    test = new BTree;
+    //for(int i=0;i<words.size();i++)
+        //b->add_word_to_tree(words[i]);
 
     /** TEST 1 -- IS THE TREE CORRECTLY SET UP AND POPULATED **/
-
+    cout << "If you get two ones, then that means the tree is correctly set up and populated." << endl;
+    cout << "Is the word correctly added?\n" << test->add_word_to_tree("RYRY") << endl;
+    cout << "Is the word in the tree?\n" << test->is_word_in_tree("RYRY") << endl;
 
     vector<string> reads;
     char * reads_file_name="input2.txt";       //make certain to place this file in the correct folder. Do not change path.
@@ -142,7 +146,10 @@ int main()
         is_in[i]=b->is_word_in_tree(reads[i]);
 
     /** TEST 2 -- IS THE TREE CORRECTLY SEARCHED **/
-
+    cout << "This sequence should not be in the tree (should get 0)\n" << test->is_word_in_tree("RYRYRY") << endl;
+    cout << "Now we should get 1 because we added RYRYRY to the tree\n" << test->add_word_to_tree("RYRYRY") << endl;
+    cout << "Check if the sequence RYRYRY is there\n" << test->is_word_in_tree("RYRYRY") << endl;
+    cout << "Add the same word to the tree again to test\n" << test->is_word_in_tree("RYRYRY")<<endl;
 
     delete is_in;
 
